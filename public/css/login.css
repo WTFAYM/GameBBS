@@ -1,0 +1,60 @@
+.login, .mine {
+    width: 100%;
+}
+
+.icon-box{
+    width: 100%;
+    height: 120px;
+    background-color: rgb(33, 150, 243);
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 0 auto;
+}
+.icon img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.input-box {
+    margin: 30px auto;
+}
+.input-field {
+    width: 65%;
+    margin: 10px auto;
+}
+.login-btn {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.login-btn a {
+    width: 64%;
+}
+.login-register {
+    margin-top: 15px;
+    text-align: right;
+}
+.login-register a {
+    margin-right: 10px;
+    font-size: 12px;
+}
+.input-field i {
+    margin-top: 10px;
+    text-align: center;
+}
+.input-field input {
+    text-indent: 10px;
+    font-weight: 600;
+    font-size: 20px;
+}
+.remember {
+    width: 65%;
+    display: block;
+    margin: 10px auto;
+    padding-left: 11px;
+}

@@ -1,0 +1,11 @@
+<div class="search-box clearfix">
+    <input type="text" id="search-input" ng-model="searchtext" list="tip" ng-change="getTips();">
+    <a ng-click="search();" id="search"><i class="fa fa-search fa-2x"></i></a>
+    <datalist id="tip">
+        <option ng-repeat="tip in tips" value="{{tip.title}}">
+            <!--<a  ng-click="toStrategy(tip.sid)">-->
+                {{tip.username}}
+            <!--</a>-->
+        </option>
+    </datalist>
+</div>

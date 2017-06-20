@@ -1,0 +1,36 @@
+<div class="mine">
+    <div class="mine-top">
+        <div class="icon-box">
+            <div class="icon">
+                <a><img ng-src="{{user.img}}"></a>
+            </div>
+        </div>
+        <div class="mine-info">
+            <div class="user">
+                <span>{{user.username}}</span>
+                <span ng-show="user.gender == 0"><i class="fa fa-mars"></i></span>
+                <span ng-show="user.gender == 1"><i class="fa fa-venus"></i></span>
+            </div>
+            <div class="follow-box">
+                <a class="follow-btn" ng-show="follow==0" ng-click="tofollow();"><span>+</span>关注</a>
+                <a class="follow-btn-cancel" ng-show="follow==1" ng-click="tocanFollow();">已关注</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="user-division">
+    <span ng-show="user.gender == 0">他发布的攻略</span>
+    <span ng-show="user.gender == 1">她发布的攻略</span>
+</div>
+<div class="user-str">
+    <div class="usitem clearfix" ng-repeat="sitem in strategies">
+        <a ng-click="toDetail(sitem.sid);">
+            <div class="usitem-content">
+                <span>{{sitem.title}}</span>
+            </div>
+            <div class="usitem-right">
+                <span>{{sitem.COUNT}}</span><i class="fa fa-commenting"></i>
+            </div>
+        </a>
+    </div>
+</div>

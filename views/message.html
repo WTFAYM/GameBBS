@@ -1,0 +1,12 @@
+<div class="message" ng-controller="MessageController">
+    <div class="mine-bottom">
+        <div class="mine-item">
+            <a ng-click="toUnRead();">回复我的</a>
+            <span class="com-count" ng-show="unread">{{commentCount}}</span>
+        </div>
+        <div class="mine-item">
+            <a href="#">系统通知</a>
+            <span class="com-count" ng-show="false"></span>
+        </div>
+    </div>
+</div>

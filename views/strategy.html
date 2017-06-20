@@ -1,0 +1,45 @@
+<div class="str-title">
+    <span>{{strategy.title}}</span>
+</div>
+<div class="str-user clearfix">
+    <div class="str-user-left">
+        <a ng-click="toUser(strategy.uid)"><img ng-src="{{strategy.img}}"></a>
+        <a ng-click="toUser(strategy.uid)"><span>{{strategy.username}}</span></a>
+        <span class="str-data">{{strategy.data}}</span>
+    </div>
+    <div class="str-user-right" ng-show="!self">
+        <a ng-show="!follow" ng-click="tofollow(strategy.uid)"><span>+</span>关注</a>
+        <a ng-show="follow">已关注</a>
+    </div>
+</div>
+<div class="str-content">
+    <div>{{strategy.text}}</div>
+</div>
+<div class="str-divider">
+    <span>评论区</span>
+    <a ng-click="commenting = true" ng-show="!commenting">我要评论</a>
+    <a ng-click="commenting = false " ng-show="commenting">取消</a>
+</div>
+<div class="comment-msg" ng-show="!comment">
+<span>暂时没有评论...</span>
+</div>
+<div class="comment-box" ng-show="commenting">
+    <textarea ng-model="content"></textarea>
+    <div class="comment-btn clearfix">
+        <a class="follow-btn" ng-click="toComment();">评论</a>
+    </div>
+</div>
+<div  ng-show="comment" ng-repeat="com in commtent">
+<div class="comment clearfix">
+    <div class="comment-user">
+        <a ng-click="toUser(com.uid)"><img ng-src="{{com.img}}"></a>
+        <a ng-click="toUser(com.uid)"><span>{{com.username}}</span></a>
+    </div>
+    <div class="comment-content">
+        <span>{{com.content}}</span>
+    </div>
+    <div class="comment-time clearfix">
+        <span>{{com.TIME}}</span>
+    </div>
+</div>
+</div>

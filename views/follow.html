@@ -1,0 +1,13 @@
+<div class="strategyList" ng-repeat="sitem in follows">
+    <div class="uitem clearfix">
+        <div class="uitem-left">
+            <a ng-click="toUser(sitem.uid);">
+                <img ng-src="{{sitem.img}}">
+                <span>{{sitem.username}}</span>
+            </a>
+        </div>
+        <div class="uitem-right">
+            <a ng-click="cancelFollow(sitem.uid,sitem.username)">取消关注</a>
+        </div>
+    </div>
+</div>

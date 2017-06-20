@@ -1,0 +1,19 @@
+.register-box {
+    margin: 30px auto;
+    text-align: center;
+}
+.gender {
+    text-align: center;
+    margin: 10px auto;
+}
+.userinfo-username {
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 15px;
+}
+.userInfo-box{
+    text-align: center;
+    width: 80px;
+    position: relative;
+    margin: 15px auto;
+}

@@ -1,0 +1,30 @@
+<div class="login" ng-controller="LoginController">
+    <div class="icon-box">
+        <div class="icon">
+            <img src="public/images/login.jpg">
+        </div>
+    </div>
+
+    <div class="input-box">
+        <div class="input-field col s9">
+            <i class="fa fa-user-circle prefix"></i>
+            <input id="account" type="text" class="validate" minlength="11" maxlength="11" ng-model="user">
+            <label for="account" data-error="请输入11位手机号码！">账号：</label>
+        </div>
+        <div class="input-field col s6">
+            <i class="fa fa-lock prefix"></i>
+            <input id="psw" type="password" class="validate" maxlength="16" minlength="6" ng-model="psw">
+            <label for="psw" data-error="请输入6~16位的密码">密码：</label>
+        </div>
+        <div class="remember">
+            <input type="checkbox" class="filled-in" id="filled-in-box" ng-model="remember" ng-click="test();"/>
+            <label for="filled-in-box">记住我</label>
+        </div>
+        <div class="login-btn">
+            <a class="waves-effect waves-light btn" ng-click="login()">登录</a>
+        </div>
+        <div class="login-register">
+            <a href="#/register">没有账号？立即注册！</a>
+        </div>
+    </div>
+</div>

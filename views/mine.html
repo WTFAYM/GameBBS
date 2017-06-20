@@ -1,0 +1,51 @@
+<div class="mine">
+    <div class="mine-top">
+        <div class="icon-box">
+            <div class="icon">
+                <a><img ng-src="{{img}}"></a>
+            </div>
+        </div>
+        <div class="mine-info">
+            <div class="user">
+                <span ng-show="exist">{{username}}</span>
+                <span ng-show="!exist"><a href="#/login">未登录</a></span>
+                <span ng-show="gender == 0"><i class="fa fa-mars"></i></span>
+                <span ng-show="gender == 1"><i class="fa fa-venus"></i></span>
+            </div>
+            <div class="follow">
+                <div class="item">
+                    <a ng-click="toFollowed();">
+                        <span>{{followed}}</span>
+                        <span>粉丝</span>
+                    </a>
+                </div>
+                <div class="item">
+                    <a ng-click="toFollows();">
+                        <span>{{follows}}</span>
+                        <span>关注</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mine-bottom">
+        <div class="mine-item">
+            <a ng-click="toSecurity();">账号安全</a>
+        </div>
+        <div class="mine-item">
+            <a ng-click="toInfo();">个人资料</a>
+        </div>
+        <div class="mine-item">
+            <a>消息提醒</a>
+        </div>
+        <div class="mine-item">
+            <a>版本信息</a>
+        </div>
+        <div class="mine-item">
+            <a>意见反馈</a>
+        </div>
+        <div class="quit">
+            <a href="#/login" class="waves-effect waves-light btn blue" ng-click="signout()">退出</a>
+        </div>
+    </div>
+</div>

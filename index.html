@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1"/>
+    <title>FGO主题游戏攻略站</title>
+    <link type="text/css" rel="stylesheet" href="public/css/base.css">
+    <link type="text/css" rel="stylesheet" href="public/css/swiper.min.css">
+    <link href="public/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/materialize.css">
+    <link type="text/css" rel="stylesheet" href="public/css/login.css">
+    <link type="text/css" rel="stylesheet" href="public/css/register.css">
+    <link type="text/css" rel="stylesheet" href="public/css/user.css">
+    <link rel="stylesheet" href="public/css/editor.css">
+</head>
+<body ng-app="GameBBS">
+<div class="appcontainer">
+    <!--header start-->
+
+    <div class="header" ui-view="header">
+    </div>
+
+    <!--header end-->
+
+    <!--content start-->
+
+    <div class="content" ui-view="content">
+    </div>
+
+    <!--content end-->
+
+    <!--footer start-->
+
+    <div class="footer">
+        <div class="fixed-action-btn toolbar">
+            <a class="btn-menu btn-floating blue"><i class="fa fa-bars fa-2x"></i></a>
+            <ul>
+                <li class="waves-effect waves-light blue"><a href="#/home"><i class="fa fa-home fa-2x"></i></a></li>
+                <li class="waves-effect waves-light blue"><a href="#/plus"><i class="fa fa-plus fa-2x"></i></a></li>
+                <li class="waves-effect waves-light blue"><a href="#/message"><i class="fa fa-envelope fa-2x"></i></a>
+                </li>
+                <li class="waves-effect waves-light blue"><a href="#/mine"><i class="fa fa-user fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--footer end-->
+</div>
+
+<!--js-->
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script src="http://apps.bdimg.com/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+<!--MaterializeUI.js-->
+<script src="libs/materialize.min.js"></script>
+<!--swiper.js入口-->
+<script src="libs/swiper-3.4.2.jquery.min.js"></script>
+<!--angularjs入口-->
+<script src="scripts/controllers.js"></script>
+<script src="scripts/services.js"></script>
+<script src="scripts/directives.js"></script>
+<!--artEditor.js入口-->
+<script src="libs/edit.js"></script>
+<!--<script src="libs/editor.js"></script>-->
+<!--app.js入口-->
+<script src="scripts/app.js"></script>
+<!--myBase64.js入口-->
+<script src="scripts/myBase64.js"></script>
+</body>
+</html>

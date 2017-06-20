@@ -1,0 +1,42 @@
+<div class="mine">
+    <div class="mine-top">
+        <div class="icon-box">
+            <div class="icon">
+                <a><img ng-src="{{img}}"></a>
+            </div>
+        </div>
+        <div class="mine-info user-info-chang">
+            <div class="userInfo-box">
+                <form name="myfrom" id="myform" ng-submit="saveReport();">
+                    <a class="follow-btn">修改头像</a>
+                    <input type="file" id="myfile" accept="image/*"
+                           style="position:absolute;left:0;opacity:0;width:100%;">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="input-field col s9">
+    <span class="userinfo-username">用户名：</span>
+    <input id="username" type="text" name="username" class="validate" ng-model="username" required>
+    <label for="username"></label>
+</div>
+<div class="gender" ng-init="gender='0'">
+    <input name="gender" type="radio" value="0" id="man" ng-model="gender"/>
+    <label for="man">男</label>
+    <input name="gender" type="radio" value="1" id="woman" ng-model="gender"/>
+    <label for="woman">女</label>
+</div>
+<div class="login-btn">
+    <a class="waves-effect waves-light btn" ng-click="changInfo();">修改</a>
+</div>
+<script>
+    $("#myfile").change(function () {
+        if($(this).value==""){
+            console.log("kong");
+            return;
+        }
+        $("#myform").submit();
+    });
+
+</script>

@@ -1,0 +1,13 @@
+<div class="strategyList" ng-repeat="sitem in strategies">
+    <div class="sitem clearfix">
+        <a ng-click="toDetail(sitem.sid);">
+            <div class="unread-content">
+                <span>{{sitem.title}}</span>
+            </div>
+        </a>
+        <div class="unread-bottom">
+            <span>{{sitem.DATA}}</span>
+            <span class="com-count">{{sitem.COUNT}}</span>
+        </div>
+    </div>
+</div>

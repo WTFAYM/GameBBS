@@ -1,0 +1,53 @@
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><a href="#"><img src="public/images/fgo1.png"></a></div>
+        <div class="swiper-slide"><a href="#"><img src="public/images/fgo2.png"></a></div>
+        <div class="swiper-slide"><a href="#"><img src="public/images/fgo3.png"></a></div>
+    </div>
+    <!--Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!--&lt;!&ndash;Add Arrows &ndash;&gt;-->
+    <!--<div class="swiper-button-next"></div>-->
+    <!--<div class="swiper-button-prev"></div>-->
+</div>
+<div class="str-lab clearfix">
+    <span>热门攻略</span>
+    <a ng-click="getAllStrategies();">查看全部<i class="fa fa-angle-double-right"></i></a>
+</div>
+<div class="strategyList">
+    <div class="sitem" ng-repeat="sitem in strategies">
+        <div class="sitem-hearder clearfix">
+            <a ng-click="toUser(sitem.uid);"><img ng-src="{{sitem.img}}"></a>
+            <div class="sitem-user">
+                <span><a ng-click="toUser(sitem.uid);">{{sitem.username}}</a></span>
+                <span>{{sitem.DATA}}</span>
+            </div>
+        </div>
+        <a ng-click="toDetail(sitem.sid);">
+            <div class="sitem-content">
+            <span>{{sitem.title}}</span>
+        </div>
+        </a>
+        <div class="sitem-bottom clearfix">
+            <i class="fa fa-commenting"></i><span>{{sitem.COUNT}}</span>
+        </div>
+    </div>
+</div>
+<div class="load-more">
+    <a class="load-btn">加载更多</a>
+</div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+//        nextButton: '.swiper-button-next',
+//        prevButton: '.swiper-button-prev',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30,
+        loop: true,
+        autoplay:2000,
+        autoplayDisableOnInteraction : false,
+        observer:true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents:true,//修改swiper的父元素时，自动初始化swiper
+    });
+</script>

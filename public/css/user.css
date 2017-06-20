@@ -1,0 +1,241 @@
+/*mine部分*/
+.mine-top {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(33, 150, 243);
+}
+.mine-top .icon-box {
+    width: 100%;
+    height: 100px;
+}
+.mine-info {
+    width: 100%;
+    height: 100px;
+}
+.user {
+    margin-top: 10px;
+    text-align: center;
+}
+.user span {
+    color: white;
+    margin-left: 5px;
+    font-family: "Microsoft YaHei UI";
+}
+.user span a {
+    color: white;
+    background-color: #00C853;
+}
+.follow {
+    margin-top: 10px;
+    text-align: center;
+}
+.item {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+.item a:hover {
+    cursor: pointer;
+}
+.item a {
+    display: inline-block;
+}
+.item span {
+    color: white;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Microsoft YaHei UI";
+}
+.mine-bottom {
+    margin-top: 10px;
+}
+.mine-item {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+    border-bottom: 1px solid #e3f2fd;
+    position: relative;
+}
+.mine-item:hover {
+    background-color: #e3f2fd ;
+}
+.mine-item a {
+    display: block;
+    width: 100%;
+    color: black;
+    font-size: 16px;
+    font-family: "Microsoft YaHei UI";
+}
+.com-count {
+    text-align: center;
+    color: white;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 10px;
+    position: absolute;
+    line-height: 20px;
+    top:10px;
+    right: 10px;
+}
+.mine-item a:hover {
+    cursor: pointer;
+}
+.mine-bottom .quit {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 55px;
+}
+.mine-bottom .quit a {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+.user-info-chang {
+    margin-top: 40px;
+}
+/*mine部分*/
+/*用户信息界面*/
+.follow-box {
+    margin-top: 15px;
+    text-align: center;
+}
+.follow-btn {
+    padding: 5px;
+    color: white;
+    background-color: #c5c821;
+}
+.follow-btn span {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 2px;
+}
+.follow-btn-cancel {
+    padding: 5px;
+    color: white;
+    background-color: #00C853;
+}
+/*follow-list部分*/
+.user-item {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #e3f2fd;
+}
+.user-item:hover {
+    background-color: #e3f2fd ;
+}
+.user-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+.item-img {
+    width: 50px;
+    height: 50px;
+    float: left;
+    text-align: center;
+}
+.item-img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+.item-content {
+    margin-left: 20px;
+    float: left;
+    line-height: 50px;
+}
+.item-content span {
+    font-size: 18px;
+    font-family: "Microsoft YaHei UI";
+}
+/*follow-list部分*/
+/*关注列表与被关注列表开始*/
+.uitem {
+    width: 80%;
+    margin: 5px auto;
+    padding-bottom: 5px;
+    line-height: 100%;
+    border-bottom: 1px solid #e3f2fd;
+}
+.uitem img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: inline-block;
+    float: left;
+}
+.uitem span {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-left: 15px;
+    display: inline-block;
+    float: left;
+}
+.uitem-left {
+    float: left;
+}
+.uitem-right {
+    margin-top: 20px;
+    float: right;
+}
+.uitem-right a {
+    padding: 4px;
+    line-height: 100%;
+    border: 1px solid #00acc1;
+}
+.user-str {
+    width: 100%;
+}
+
+.user-division {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e3f2fd;
+}
+.user-division span {
+    font-size: 16px;
+}
+
+
+.usitem {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px auto;
+    border-bottom: 1px solid #e3f2fd;
+    position: relative;
+}
+.usitem:hover {
+    background-color: #e3f2fd;
+}
+.usitem a {
+    width: 100%;
+    display: block;
+}
+.usitem-content {
+    width: 80%;
+    float: left;
+    margin-left: 30px;
+}
+.usitem-content span {
+    font-size: 16px;
+}
+.usitem-right {
+    float: right;
+    color: black;
+    position: absolute;
+    right: 25px;
+    bottom: 5px;
+}
+.usitem-right span {
+    margin-right: 5px;
+    font-size: 10px;
+}
+/*关注列表结束*/

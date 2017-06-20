@@ -1,0 +1,32 @@
+<div class="register-box" ng-controller="RegisterController">
+    <div class="input-field col s9">
+        <i class="fa fa-user-circle prefix"></i>
+        <input id="account" type="text" name="phone" class="validate" minlength="11" maxlength="11" ng-model="phone" required ng-blur="checkaccount();">
+        <label for="account" data-error="请输入11位手机号码！">手机号：</label>
+        <span class="error" ng-show="phone.$invalid">手机格式错误</span>
+    </div>
+    <div class="input-field col s6">
+        <i class="fa fa-lock prefix"></i>
+        <input id="psw" name="password" type="password" class="validate" maxlength="16" minlength="6" ng-model="psw" required>
+        <label for="psw" data-error="请输入6~16位的密码">密码：</label>
+        <span class="error" ng-show="password.$invalid">密码格式错误</span>
+    </div>
+    <div class="input-field col s6" ng-init="wrongpsd= false">
+        <i class="fa fa-lock prefix"></i>
+        <input id="repsw" type="password" class="validate" maxlength="16" minlength="6" ng-model="repsw" required ng-blur="checkrepsw();">
+        <label for="repsw">再次输入密码：</label>
+        <span class="error" ng-show="wrongpsd">两次密码不一致</span>
+    </div>
+    <div class="gender" ng-init="gender='0'">
+        <input name="gender" type="radio" value="0" id="man" ng-model="gender"/>
+        <label for="man">男</label>
+        <input name="gender" type="radio" value="1" id="woman" ng-model="gender" />
+        <label for="woman">女</label>
+    </div>
+    <div class="login-btn">
+        <a class="waves-effect waves-light btn" ng-click="register();">注册</a>
+    </div>
+    <div class="login-register">
+        <a href="#/login">已有账号？点我登录！</a>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="strategyList" ng-repeat="sitem in strategies">
+    <div class="sitem">
+        <div class="sitem-hearder clearfix">
+            <a ng-click="toUser(sitem.uid);"><img ng-src="{{sitem.img}}"></a>
+            <div class="sitem-user">
+                <span><a ng-click="toUser(sitem.uid);">{{sitem.username}}</a></span>
+                <span>{{sitem.DATA}}</span>
+            </div>
+        </div>
+        <a ng-click="toDetail(sitem.sid);">
+            <div class="sitem-content">
+                <span>{{sitem.title}}</span>
+            </div>
+        </a>
+        <div class="sitem-bottom clearfix">
+            <i class="fa fa-commenting"></i><span>{{sitem.COUNT}}</span>
+        </div>
+    </div>
+</div>
