@@ -19,7 +19,7 @@ $.fn.extend({
                     if (o.src = e.target.result, t._opt.compressSize && Math.ceil(a.size / 1024 / 1024) > t._opt.compressSize && setTimeout(function () {
                             r = t.compressHandler(o)
                         }, 10), t._opt.showServer)return void t.upload(r);
-                    var i = '<img src="' + r + '" style="max-width:100%;" />';
+                    var i = '<img src="' + r + '" style="display:block;max-width:90%; margin: 0px auto;" />';
                     t.insertImage(i)
                 }
             }), t.placeholderHandler(), t.pasteHandler()
@@ -53,7 +53,7 @@ $.fn.extend({
         r[a] = e, $.ajax({url: t._opt.uploadUrl, type: "post", data: r, cache: !1}).then(function (e) {
             var a = t._opt.uploadSuccess(e);
             if (a) {
-                var r = '<img src="' + a + '" style="max-width:100%;" />';
+                var r = '<img src="' + a + '" style="display:block;max-width:90%; margin: 0px auto;" />';
                 t.insertImage(r)
             } else console.log("地址为空啊!大兄弟", a)
         }, function (e) {

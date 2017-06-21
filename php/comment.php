@@ -22,20 +22,20 @@ $sid = $_POST['sid'];
 $content = $_POST['content'];
 $time = date("Y-m-d H:i:s");
 
-$commentSQL = "INSERT INTO COMMENT(uid,sid,content,TIME) VALUE('$uid','$sid','$content','$time')";
+$commentSQL = "INSERT INTO `comment`(uid,sid,content,TIME) VALUE('$uid','$sid','$content','$time')";
 $getCommentSQL = "SELECT comment.uid,username,img,content,TIME 
-                FROM COMMENT LEFT JOIN USER ON comment.uid=user.uid WHERE sid = '$sid' ORDER BY cid DESC";
+                FROM `comment` LEFT JOIN `user` ON comment.uid=user.uid WHERE sid = '$sid' ORDER BY cid DESC";
 $results = $db->execSQL2($commentSQL);
 if ($results > 0){
     $msg->code = 1;
-    $result =  $db->execSQL($getCommentSQL);
-    if ($result->num_rows > 0){
-        $msg -> code = 1;
-        while ($row = $result->fetch_object())
-            array_push($arr, $row);
-        $msg->data = $arr;
-    }
+
 } else{
     $msg->code=0;
+}
+$result =  $db->execSQL($getCommentSQL);
+if ($result->num_rows > 0){
+    while ($row = $result->fetch_object())
+        array_push($arr, $row);
+    $msg->data = $arr;
 }
 echo json_encode($msg);

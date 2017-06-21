@@ -21,9 +21,10 @@ if($_SESSION['user']!=null){
 }
 $username = $_POST['username'];
 $gender = $_POST['gender'];
+$img = $_POST['img'];
 
-$updateSQL = "UPDATE USER SET username='$username',gender='$gender' WHERE uid='$uid'";
-$getinfo = "SELECT * FROM user WHERE uid = '$uid'";
+$updateSQL = "UPDATE `user` SET username='$username',gender='$gender',img='$img' WHERE uid='$uid'";
+$getinfo = "SELECT * FROM `user` WHERE uid = '$uid'";
 
 $results = $db->execSQL2($updateSQL);
 if($results>0){

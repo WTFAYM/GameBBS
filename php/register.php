@@ -17,9 +17,9 @@ $img = "public/images/login.jpg";
 $msg = new Message();
 $db = new MyDB();
 
-$insertSQL = "INSERT INTO user VALUE('$user','$psw','$username',$gender,'$img')";
+$insertSQL = "INSERT INTO `user` VALUE('$user','$psw','$username',$gender,'$img')";
 
-$checkSQL = "SELECT * FROM user WHERE uid = '$user 'AND  psd = '$psw'";
+$checkSQL = "SELECT * FROM `user` WHERE uid = '$user 'AND  psd = '$psw'";
 
 $results = $db->execSQL2($insertSQL);
 if ($results > 0){

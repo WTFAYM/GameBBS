@@ -4,7 +4,7 @@ angular.module('Controllers', [])
         $scope.title = "登录";
         $http.get('php/isLogin.php').then(function (response) {
             if (response.data.code == 1) {
-               $state.go('mine');
+                $state.go('mine');
             }
         });
         if ($rootScope.loginuser != null) {
@@ -174,14 +174,12 @@ angular.module('Controllers', [])
         };
         $scope.toSecurity = function () {
             if (user == null) {
-                alert("您还没有登录哦！");
                 return;
             }
             $state.go('security');
         };
         $scope.toInfo = function () {
             if (user == null) {
-                alert("您还没有登录哦！");
                 return;
             }
             $state.go('mineInfo');
@@ -291,7 +289,6 @@ angular.module('Controllers', [])
     .controller('UserInfoController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
         $scope.title = "个人资料";
         var user;
-        var base64;
         $http.get('php/isLogin.php').then(function (response) {
             if (response.data.code == 1) {
                 $scope.exist = true;
@@ -306,25 +303,34 @@ angular.module('Controllers', [])
                 $scope.img = "public/images/login.jpg";
             }
         });
-        $scope.saveReport = function () {
-            var fsrc;
-            fsrc = getFileUrl("myfile");
-            convertImgToBase64(fsrc, function (base64Img) {
-                base64 = base64Img;
-                $http.post('php/upload.php', {image: base64}).then(function (response) {
-                    console.log(response);
+        $scope.saveReport = function (ele) {
+            $scope.files = ele.files;
+            $scope.$apply(); //传播Model的变化。
+            var fd = new FormData();
+            var file = document.querySelector('input[type=file]').files[0];
+            var filename = $scope.files[0].name;
+            if (filename.length > 1 && filename) {
+                var fsrc;
+                fsrc = getFileUrl("myfile");
+                convertImgToBase64(fsrc, function (base64Img) {
+                    $http.post('php/uploadimg.php', {image: base64Img}).then(function (response) {
+                        if(response.data.code==100){
+                            $scope.img = response.data.data.url;
+                        }
+                    });
                 });
-            });
+            }
         };
         $scope.changInfo = function () {
             var username = $scope.username;
             var gender = $scope.gender;
-            if (username == user.username && gender == user.gender) {
+            var img = $scope.img;
+            if (username == user.username && gender == user.gender&&img==user.img) {
                 alert("修改成功！");
                 $state.go('mine');
                 return;
             }
-            $http.post('php/updateInfo.php', {username: username, gender: gender}).then(function (response) {
+            $http.post('php/updateInfo.php', {username: username, gender: gender,img:img}).then(function (response) {
                 if (response.data.code == 1) {
                     alert("修改成功！");
                     $state.go('mine');
@@ -332,18 +338,18 @@ angular.module('Controllers', [])
             });
         }
     }])
-    .controller('PlusController', ['$scope', '$http', '$state',function ($scope, $http,$state) {
+    .controller('PlusController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
         $scope.getTips = function () {
             var text = $scope.searchtext;
-            if(text==null||text.length==0){
+            if (text == null || text.length == 0) {
                 return;
             }
             setTimeout(function () {
-                if (text==$scope.searchtext){
-                    $http.post('php/getTip.php',{text:text}).then(function (response) {
-                        if(response.data.code==1){
+                if (text == $scope.searchtext) {
+                    $http.post('php/getTip.php', {text: text}).then(function (response) {
+                        if (response.data.code == 1) {
                             $scope.tips = response.data.data;
-                        }else {
+                        } else {
                             $scope.tips = null;
                         }
                     })
@@ -351,20 +357,20 @@ angular.module('Controllers', [])
                 else {
                     return;
                 }
-            },700);
+            }, 700);
         };
         $scope.toStrategy = function (sid) {
             $state.go('strategy', {sid: sid});
         };
         $scope.search = function () {
             var text = $scope.searchtext;
-            if(text==null||text.length==0){
+            if (text == null || text.length == 0) {
                 return;
             }
-            $state.go('search',{search:text});
+            $state.go('search', {search: text});
         };
     }])
-    .controller('SearchController', ['$scope', '$http', '$state', '$rootScope','$stateParams', function ($scope, $http, $state, $rootScope,$stateParams) {
+    .controller('SearchController', ['$scope', '$http', '$state', '$rootScope', '$stateParams', function ($scope, $http, $state, $rootScope, $stateParams) {
         var stitle = $stateParams.search;
         $scope.searchtext = stitle;
         var user = $rootScope.uid;
@@ -375,22 +381,22 @@ angular.module('Controllers', [])
                 }
             })
         }
-        $http.post('php/getStrategies.php', {type: 2,search:stitle}).then(function (response) {
+        $http.post('php/getStrategies.php', {type: 2, search: stitle}).then(function (response) {
             if (response.data.code == 1) {
                 $scope.strategies = response.data.data;
             }
         });
         $scope.getTips = function () {
             var text = $scope.searchtext;
-            if(text==null||text.length==0){
+            if (text == null || text.length == 0) {
                 return;
             }
             setTimeout(function () {
-                if (text==$scope.searchtext){
-                    $http.post('php/getTip.php',{text:text}).then(function (response) {
-                        if(response.data.code==1){
+                if (text == $scope.searchtext) {
+                    $http.post('php/getTip.php', {text: text}).then(function (response) {
+                        if (response.data.code == 1) {
                             $scope.tips = response.data.data;
-                        }else {
+                        } else {
                             $scope.tips = null;
                         }
                     })
@@ -398,14 +404,14 @@ angular.module('Controllers', [])
                 else {
                     return;
                 }
-            },700);
+            }, 700);
         };
         $scope.search = function () {
             var text = $scope.searchtext;
-            if(text==null||text.length==0){
+            if (text == null || text.length == 0) {
                 return;
             }
-            $state.go('search',{search:text});
+            $state.go('search', {search: text});
         }
         $scope.toUser = function (uid) {
             //通用户uid进入到相应的user界面
@@ -527,6 +533,8 @@ angular.module('Controllers', [])
         $scope.title = "攻略";
         $scope.self = false;
         $scope.commenting = false;
+        $scope.more = false;
+        var page = 1;
         var user = $rootScope.uid;
         if (user == null) {
             $http.get('php/isLogin.php').then(function (response) {
@@ -541,15 +549,20 @@ angular.module('Controllers', [])
                 if (response.data.code == 1) {
                     $scope.strategy = response.data.data;
                     $scope.commtent = response.data.data2;
+                    if (response.data.data2 == null || response.data.data2.length < 10) {
+                        $scope.more = false;
+                    } else {
+                        $scope.more = true;
+                    }
                     var uid = $scope.strategy.uid;
-                    if(uid==user){
-                        $scope.self=true;
-                    }else {
+                    if (uid == user) {
+                        $scope.self = true;
+                    } else {
                         $scope.self = false;
-                        $http.post('php/isFollow.php',{uid:uid}).then(function (res) {
-                            if(res.data.code==1){
+                        $http.post('php/isFollow.php', {uid: uid}).then(function (res) {
+                            if (res.data.code == 1) {
                                 $scope.follow = true;
-                            }else {
+                            } else {
                                 $scope.follow = false;
                             }
                         })
@@ -559,6 +572,22 @@ angular.module('Controllers', [])
                     }
                 }
             });
+        $scope.getMore = function () {
+            page++;
+            $http.post('php/getComment.php', {sid: sid, page: page}).then(function (response) {
+                if (response.data.code == 1) {
+                    $scope.commtent = response.data.data;
+                    if (response.data.data.length < page * 10) {
+                        $scope.more = false;
+                    } else {
+                        $scope.more = true;
+                    }
+                }
+                else {
+                    page = 1;
+                }
+            });
+        };
         $scope.toUser = function (uid) {
             if (user == uid)
                 $state.go('mine');
@@ -580,22 +609,22 @@ angular.module('Controllers', [])
         };
         $scope.toComment = function () {
             var content = $scope.content;
-            if(content==null){
+            if (content == null) {
                 alert("内容为不能空！");
                 return;
             }
-            if(content.trim().length<=0){
+            if (content.trim().length <= 0) {
                 alert("内容为不能空(空格键也不行哦)！");
                 $scope.content = "";
                 return;
             }
-            $http.post('php/comment.php',{sid:sid,content:content}).then(function (response) {
-                if(response.data.code==1){
-                    alert("评论成功!");
+            $http.post('php/comment.php', {sid: sid, content: content}).then(function (response) {
+                if (response.data.code == 1) {
                     $scope.commtent = response.data.data;
                     $scope.commenting = false;
                     $scope.content = "";
-                }else {
+                    $scope.comment = true;
+                } else {
                     alert("登录后才能评论哦");
                 }
             })
@@ -604,6 +633,8 @@ angular.module('Controllers', [])
     .controller('HomeController', ['$scope', '$http', '$state', '$rootScope', function ($scope, $http, $state, $rootScope) {
         $scope.title = "首页";
         var user = $rootScope.uid;
+        $scope.more = true;
+        var page = 1;
         if (user == null) {
             $http.get('php/isLogin.php').then(function (response) {
                 if (response.data.code == 1) {
@@ -611,11 +642,31 @@ angular.module('Controllers', [])
                 }
             })
         }
-        $http.post('php/getStrategies.php', {type: 0}).then(function (response) {
+        $http.post('php/getStrategies.php', {type: 0, page: 1}).then(function (response) {
             if (response.data.code == 1) {
                 $scope.strategies = response.data.data;
+                if (response.data.data.length < 5) {
+                    $scope.more = false;
+                } else {
+                    $scope.more = true;
+                }
             }
         });
+        $scope.getMore = function () {
+            page++;
+            $http.post('php/getStrategies.php', {type: 0, page: page}).then(function (response) {
+                if (response.data.code == 1) {
+                    $scope.strategies = response.data.data;
+                    if (response.data.data.length < page * 5) {
+                        $scope.more = false;
+                    } else {
+                        $scope.more = true;
+                    }
+                } else {
+                    page = 1;
+                }
+            })
+        };
         $scope.toUser = function (uid) {
             //通用户uid进入到相应的user界面
             //使用$state.go('User',{uid:UserID})

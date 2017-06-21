@@ -16,8 +16,8 @@ if($_SESSION['user']!=null){
 }
 $psw = $_POST['psw'];
 
-$updateSQL = "UPDATE USER SET psd='$psw' WHERE uid='$uid'";
-$getinfo = "SELECT * FROM user WHERE uid = '$uid'";
+$updateSQL = "UPDATE `user` SET psd='$psw' WHERE uid='$uid'";
+$getinfo = "SELECT * FROM `user` WHERE uid = '$uid'";
 
 $results = $db->execSQL2($updateSQL);
 if($results>0){

@@ -13,7 +13,7 @@ if (isset($_POST['text'])){
     return;
 }
 $getTipSQL = "SELECT user.username,strategies.title ,strategies.sid
-            FROM strategies LEFT JOIN USER ON strategies.uid = user.uid 
+            FROM strategies LEFT JOIN `user` ON strategies.uid = user.uid 
             WHERE title LIKE \"%".$text."%\" GROUP BY strategies.uid ORDER BY top LIMIT 5";
 
 $result = $db->execSQL($getTipSQL);

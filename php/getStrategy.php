@@ -14,9 +14,9 @@ if (isset($_POST['sid'])) {
 }
 
 $getStrSQL = "SELECT user.uid,user.username,user.img,strategies.title,strategies.data,strategies.text 
-             FROM strategies LEFT JOIN USER ON strategies.uid = user.uid WHERE sid = '$sid'";
+             FROM strategies LEFT JOIN `user` ON strategies.uid = user.uid WHERE sid = '$sid'";
 $getCommentSQL = "SELECT comment.uid,username,img,content,TIME 
-                FROM COMMENT LEFT JOIN USER ON comment.uid=user.uid WHERE sid = '$sid' ORDER BY cid DESC";
+                FROM `comment` LEFT JOIN `user` ON comment.uid=user.uid WHERE sid = '$sid' ORDER BY cid DESC LIMIT 10";
 $res = $db->execSQL($getStrSQL);
 if ($res->num_rows > 0){
     $msg->code=1;

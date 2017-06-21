@@ -15,7 +15,7 @@ if($_SESSION['user']!=null){
     $u = $_SESSION['user'];
     $uid = $u->uid;
 }
-$getUnreadSQL = "SELECT strategies.sid,title,DATA, COUNT(comment.uid) COUNT FROM COMMENT LEFT JOIN strategies ON  strategies.sid=comment.sid WHERE `read`=0 AND strategies.uid = '$uid' GROUP BY strategies.sid";
+$getUnreadSQL = "SELECT strategies.sid,title,DATA, COUNT(comment.uid) COUNT FROM `comment` LEFT JOIN strategies ON  strategies.sid=comment.sid WHERE `read`=0 AND strategies.uid = '$uid' GROUP BY strategies.sid";
 
 $result = $db->execSQL($getUnreadSQL);
 if ($result->num_rows > 0){

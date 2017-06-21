@@ -1,4 +1,4 @@
-var App = angular.module('GameBBS', ['ui.router', 'Controllers', 'Directive']);
+var App = angular.module('GameBBS', ['ui.router', 'Controllers', 'Directive','Services']);
 //$http的传递参数处理
 App.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';

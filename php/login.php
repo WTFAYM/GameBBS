@@ -13,7 +13,7 @@ $db = new MyDB();
 $msg = new Message();
 
 //查询用户是否处在
-$checkSQL = "SELECT * FROM user WHERE uid = '$user 'AND  psd = '$psw'";
+$checkSQL = "SELECT * FROM `user` WHERE uid = '$user 'AND  psd = '$psw'";
 $result = $db->execSQL($checkSQL);
 if ($result->num_rows > 0){
     session_start();

@@ -22,7 +22,7 @@ if (isset($_POST['sid'])){
     return;
 }
 
-$readSQL = "UPDATE COMMENT SET `read`=1 WHERE sid='$sid'";
+$readSQL = "UPDATE `comment` SET `read`=1 WHERE sid='$sid'";
 
 $results = $db->execSQL2($readSQL);
 if($results>0){

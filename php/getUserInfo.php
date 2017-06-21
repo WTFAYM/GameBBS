@@ -29,7 +29,7 @@ if(empty($_SESSION['user'])){
 }
 
 //获取用户信息。
-$getUserSQL = "SELECT uid,username,gender,img FROM USER WHERE uid='$uid'";
+$getUserSQL = "SELECT uid,username,gender,img FROM `user` WHERE uid='$uid'";
 
 $result = $db->execSQL($getUserSQL);
 if ($result->num_rows > 0){
@@ -41,7 +41,7 @@ if ($result->num_rows > 0){
 }
 //获取攻略列表
 $getStrategySQl = "SELECT strategies.sid,title,DATA,COUNT(cid) COUNT 
-              FROM USER, strategies LEFT JOIN COMMENT ON strategies.sid=comment.sid 
+              FROM `user`, strategies LEFT JOIN `comment` ON strategies.sid=comment.sid 
               WHERE user.uid=strategies.uid AND user.uid = '$uid' GROUP BY strategies.sid ORDER BY top,COUNT DESC";
 $results = $db->execSQL($getStrategySQl);
 if ($results->num_rows > 0) {

@@ -46,6 +46,7 @@ $uploadMgr = new UploadManager();
 // 调用 UploadManager 的 putFile 方法进行文件的上传
 list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
 $repath ="http://ord7ngzu4.bkt.clouddn.com/";
+$deal = "?imageView2/1/w/200/h/200/q/75|imageslim";
 if ($err !== null) {
     echo json_encode([
         'code' => '102'
@@ -55,7 +56,7 @@ if ($err !== null) {
         'code' => '100',
         'summary' => 'success',
         'data' => [
-            'url' =>$repath.$ret['key']
+            'url' =>$repath.$ret['key'].$deal
         ]
     ]);
 }

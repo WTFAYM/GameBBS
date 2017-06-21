@@ -21,7 +21,7 @@ $content = $_POST['content'];
 $time = date("Y-m-d H:i:s");
 
 //插入语句
-$insertSQL = "INSERT INTO strategies(uid,title,DATA,TEXT) VALUE('$uid','$title','$time','$content')";
+$insertSQL = "INSERT INTO strategies(uid,title,`DATA`,TEXT) VALUE('$uid','$title','$time','$content')";
 $results = $db->execSQL2($insertSQL);
 
 if ($results > 0){

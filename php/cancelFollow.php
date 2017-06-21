@@ -21,7 +21,7 @@ $fuid = $_POST['uid'];
 //删除follow表中相关数据
 $canSQL = "DELETE FROM follow WHERE use_uid = '$uid' AND uid = '$fuid'";
 //获取更新后数据
-$getFollowSQL = "SELECT uid,username,img FROM USER WHERE uid IN (SELECT uid FROM follow WHERE use_uid='$uid')";
+$getFollowSQL = "SELECT uid,username,img FROM `user` WHERE uid IN (SELECT uid FROM follow WHERE use_uid='$uid')";
 
 $results = $db->execSQL2($canSQL);
 if($results>0){

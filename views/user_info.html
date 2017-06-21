@@ -7,11 +7,10 @@
         </div>
         <div class="mine-info user-info-chang">
             <div class="userInfo-box">
-                <form name="myfrom" id="myform" ng-submit="saveReport();">
-                    <a class="follow-btn">修改头像</a>
-                    <input type="file" id="myfile" accept="image/*"
-                           style="position:absolute;left:0;opacity:0;width:100%;">
-                </form>
+
+                <a class="follow-btn">修改头像</a>
+                <input type="file" id="myfile" accept="image/*"ng-src={{files[0].name}} onchange='angular.element(this).scope().saveReport(this)'
+                       style="position:absolute;left:0;opacity:0;width:100%;">
             </div>
         </div>
     </div>
@@ -28,15 +27,5 @@
     <label for="woman">女</label>
 </div>
 <div class="login-btn">
-    <a class="waves-effect waves-light btn" ng-click="changInfo();">修改</a>
+    <a class="waves-effect waves-light btn" ng-click="changInfo();">确认修改</a>
 </div>
-<script>
-    $("#myfile").change(function () {
-        if($(this).value==""){
-            console.log("kong");
-            return;
-        }
-        $("#myform").submit();
-    });
-
-</script>

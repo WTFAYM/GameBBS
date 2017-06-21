@@ -14,7 +14,7 @@ if($_SESSION['user']!=null){
 
 $msg = new Message();
 $db = new MyDB();
-$getSQL = "SELECT COUNT(*) COUNT  FROM COMMENT WHERE  `read` = 0 AND sid IN (SELECT sid FROM strategies WHERE uid='$uid')";
+$getSQL = "SELECT COUNT(*) COUNT  FROM `comment` WHERE  `read` = 0 AND sid IN (SELECT sid FROM strategies WHERE uid='$uid')";
 
 $result = $db->execSQL($getSQL);
 if ($result->num_rows > 0){

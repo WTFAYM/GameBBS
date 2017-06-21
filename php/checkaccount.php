@@ -10,7 +10,7 @@ if(!isset($_POST['account'])||empty($_POST['account'])){
     return ;
 }
 $user = $_POST['account'];
-$checkSQL = "SELECT * FROM user WHERE uid = '$user'";
+$checkSQL = "SELECT * FROM `user` WHERE uid = '$user'";
 $result = $db->execSQL($checkSQL);
 if ($result->num_rows > 0){
     $msg->code = 0;

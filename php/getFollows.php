@@ -23,8 +23,8 @@ if (isset($_POST['type'])){
     return;
 }
 
-$getFollowSQL = "SELECT uid,username,img FROM USER WHERE uid IN (SELECT uid FROM follow WHERE use_uid='$uid')";
-$getFollowedSQL = "SELECT uid,username,img FROM USER WHERE uid IN (SELECT use_uid FROM follow WHERE uid='$uid')";
+$getFollowSQL = "SELECT uid,username,img FROM `user` WHERE uid IN (SELECT uid FROM follow WHERE use_uid='$uid')";
+$getFollowedSQL = "SELECT uid,username,img FROM `user` WHERE uid IN (SELECT use_uid FROM follow WHERE uid='$uid')";
 if ($type==1){
     $result = $db->execSQL($getFollowSQL);
 }elseif ($type==2){

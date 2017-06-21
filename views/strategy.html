@@ -13,7 +13,7 @@
     </div>
 </div>
 <div class="str-content">
-    <div>{{strategy.text}}</div>
+    <div ng-bind-html="strategy.text|label"></div>
 </div>
 <div class="str-divider">
     <span>评论区</span>
@@ -36,10 +36,13 @@
         <a ng-click="toUser(com.uid)"><span>{{com.username}}</span></a>
     </div>
     <div class="comment-content">
-        <span>{{com.content}}</span>
+       <span>{{com.content}}</span>
     </div>
     <div class="comment-time clearfix">
         <span>{{com.TIME}}</span>
     </div>
 </div>
+</div>
+<div class="load-more">
+    <a class="load-btn" ng-show="more"  ng-click="getMore();">加载更多</a>
 </div>

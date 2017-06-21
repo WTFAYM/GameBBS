@@ -16,7 +16,7 @@ if($_SESSION['user']!=null){
 }
 $old = $_POST['old'];
 
-$selSQL = "SELECT psd FROM USER WHERE uid = '$uid'";
+$selSQL = "SELECT psd FROM `user` WHERE uid = '$uid'";
 
 $result = $db->execSQL($selSQL);
 if ($result->num_rows > 0){

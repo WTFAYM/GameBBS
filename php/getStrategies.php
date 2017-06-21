@@ -9,23 +9,29 @@ if (isset($_POST['type'])){
     echo json_encode($msg);
     return;
 }
+$page = 1;
 $text = "";
+if($type==0){
+    $page = $_POST['page'];
+}
 if ($type==2){
     $text = $_POST['search'];
 }
+
 $msg = new Message();
 $db = new MyDB();
 $arr = [];
+$page = $page*5;
 //查询前五条热门攻略
 $serachSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,DATA,COUNT(cid) COUNT 
-              FROM USER, strategies LEFT JOIN COMMENT ON strategies.sid=comment.sid 
-              WHERE user.uid=strategies.uid GROUP BY strategies.sid ORDER BY top,COUNT DESC LIMIT 5";
-$serachAllSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,DATA,COUNT(cid) COUNT 
-              FROM USER, strategies LEFT JOIN COMMENT ON strategies.sid=comment.sid 
+              FROM `user`, strategies LEFT JOIN `comment` ON strategies.sid=comment.sid 
+              WHERE user.uid=strategies.uid GROUP BY strategies.sid ORDER BY top,COUNT DESC LIMIT $page";
+$serachAllSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,data,COUNT(cid) COUNT 
+              FROM `user`, strategies LEFT JOIN `comment` ON strategies.sid=comment.sid 
               WHERE user.uid=strategies.uid GROUP BY strategies.sid ORDER BY top,COUNT DESC";
 
 $getSearchSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,DATA,COUNT(cid) COUNT 
-              FROM USER, strategies LEFT JOIN COMMENT ON strategies.sid=comment.sid 
+              FROM `user`, strategies LEFT JOIN `comment` ON strategies.sid=comment.sid 
               WHERE user.uid=strategies.uid AND title LIKE \"%".$text."%\" GROUP BY strategies.sid ORDER BY top,COUNT DESC";
 
 if($type==0){
