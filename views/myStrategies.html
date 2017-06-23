@@ -1,0 +1,19 @@
+<div class="user-str">
+    <div class="usitem clearfix" ng-repeat="sitem in strategies">
+        <a ng-click="toDetail(sitem.sid);">
+            <div class="usitem-content">
+                <span>{{sitem.title}}</span>
+            </div>
+            <div class="usitem-right">
+                <div class="clearfix">
+                    <div style="float: right">
+                    <span>{{sitem.COUNT}}</span><i class="fa fa-commenting"></i>
+                    </div>
+                </div>
+                <div>
+                    <span>{{sitem.DATA}}</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

@@ -3,8 +3,13 @@
 </div>
 <div class="str-user clearfix">
     <div class="str-user-left">
-        <a ng-click="toUser(strategy.uid)"><img ng-src="{{strategy.img}}"></a>
-        <a ng-click="toUser(strategy.uid)"><span>{{strategy.username}}</span></a>
+        <a ng-click="toUser(strategy.uid)">
+            <img ng-src="{{strategy.img}}">
+        </a>
+        <a ng-click="toUser(strategy.uid)">
+            <span>{{strategy.username}}</span>
+            <span class="str-label">楼主</span>
+        </a>
         <span class="str-data">{{strategy.data}}</span>
     </div>
     <div class="str-user-right" ng-show="!self">
@@ -21,7 +26,7 @@
     <a ng-click="commenting = false " ng-show="commenting">取消</a>
 </div>
 <div class="comment-msg" ng-show="!comment">
-<span>暂时没有评论...</span>
+    <span>暂时没有评论...</span>
 </div>
 <div class="comment-box" ng-show="commenting">
     <textarea ng-model="content"></textarea>
@@ -29,20 +34,27 @@
         <a class="follow-btn" ng-click="toComment();">评论</a>
     </div>
 </div>
-<div  ng-show="comment" ng-repeat="com in commtent">
-<div class="comment clearfix">
-    <div class="comment-user">
-        <a ng-click="toUser(com.uid)"><img ng-src="{{com.img}}"></a>
-        <a ng-click="toUser(com.uid)"><span>{{com.username}}</span></a>
+<div ng-show="comment" ng-repeat="com in commtent">
+    <div class="comment clearfix">
+        <div class="comment-user">
+            <a ng-click="toUser(com.uid)">
+                <img ng-src="{{com.img}}">
+            </a>
+            <a ng-click="toUser(com.uid)">
+                <span>{{com.username}}</span>
+                <span class="str-label" ng-show="com.uid==suid">我</span>
+            </a>
+            <a class="com-delete"  ng-show="com.uid==suid||self" ng-click="deleteCom(com.cid);"><i class="fa fa-close"></i></a>
+        </div>
+
+        <div class="comment-content">
+            <span>{{com.content}}</span>
+        </div>
+        <div class="comment-time clearfix">
+            <span>{{com.TIME}}</span>
+        </div>
     </div>
-    <div class="comment-content">
-       <span>{{com.content}}</span>
-    </div>
-    <div class="comment-time clearfix">
-        <span>{{com.TIME}}</span>
-    </div>
-</div>
 </div>
 <div class="load-more">
-    <a class="load-btn" ng-show="more"  ng-click="getMore();">加载更多</a>
+    <a class="load-btn" ng-show="more" ng-click="getMore();">加载更多</a>
 </div>

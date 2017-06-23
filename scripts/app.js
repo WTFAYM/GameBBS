@@ -224,6 +224,32 @@ App.config(["$stateProvider", function ($stateProvider) {
                 }
             }
         })
+        .state("myStrategy", {
+            url: '/myStrategy',
+            views: {
+                'header': {
+                    templateUrl: 'views/withback_header.html',
+                    controller: 'MyStrategiesController'
+                },
+                'content': {
+                    templateUrl: 'views/myStrategies.html',
+                    controller: 'MyStrategiesController'
+                }
+            }
+        })
+        .state("myComment", {
+            url: '/myComment',
+            views: {
+                'header': {
+                    templateUrl: 'views/withback_header.html',
+                    controller: 'MyCommentController'
+                },
+                'content': {
+                    templateUrl: 'views/myStrategies.html',
+                    controller: 'MyCommentController'
+                }
+            }
+        })
         .state("mineInfo", {
             url: '/mineInfo',
             views: {

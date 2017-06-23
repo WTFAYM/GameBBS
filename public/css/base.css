@@ -337,6 +337,13 @@ a:hover {
     float: left;
     margin-left: 10px;
 }
+.str-user-left .str-label {
+    color: white;
+    background-color: #ffc71b;
+    font-size: 10px;
+    margin-left: 3px;
+    padding: 1px;
+}
 .str-user-left .str-data {
     font-size: 12px;
     margin: 0;
@@ -362,9 +369,12 @@ a:hover {
     margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    text-indent: 2em;
     border-bottom: 1px solid #e3f2fd;
     font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "宋体", Arial, Verdana, sans-serif;
+}
+.str-content img {
+    padding: 0;
+    margin: 0 auto;
 }
 
 .str-divider {
@@ -414,6 +424,7 @@ a:hover {
 
 .comment-user {
     height: 50px;
+    position: relative;
 }
 
 .comment-user img {
@@ -429,7 +440,19 @@ a:hover {
     float: left;
     margin-left: 10px;
 }
-
+.comment-user .str-label {
+    color: white;
+    background-color: #ffc71b;
+    font-size: 10px;
+    margin-left: 3px;
+    padding: 1px;
+}
+.comment-user .com-delete {
+    color: black;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
 .comment-content {
     width: 96%;
     margin: 0 auto;

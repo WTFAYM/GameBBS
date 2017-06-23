@@ -1,10 +1,13 @@
+<div class="comment-msg" ng-init="result = false" ng-show="result">
+    <span>搜索结果为空，试试搜索别的吧！</span>
+</div>
 <div class="strategyList" ng-repeat="sitem in strategies">
     <div class="sitem">
         <div class="sitem-hearder clearfix">
             <a ng-click="toUser(sitem.uid);"><img ng-src="{{sitem.img}}"></a>
             <div class="sitem-user">
                 <span><a ng-click="toUser(sitem.uid);">{{sitem.username}}</a></span>
-                <span>{{sitem.DATA}}</span>
+                <span>{{sitem.data}}</span>
             </div>
         </div>
         <a ng-click="toDetail(sitem.sid);">

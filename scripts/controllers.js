@@ -172,6 +172,21 @@ angular.module('Controllers', [])
             }
             $state.go('followed');
         };
+        //查看当前用户发布的攻略
+        $scope.toStrategies = function () {
+            if (user == null) {
+                return;
+            }
+            $state.go('myStrategy');
+        };
+        //查看当前用户的评论
+        $scope.toComment = function () {
+            if (user == null) {
+                return;
+            }
+            $state.go('myComment');
+        };
+
         $scope.toSecurity = function () {
             if (user == null) {
                 return;
@@ -192,6 +207,7 @@ angular.module('Controllers', [])
             $state.go('login');
         }
     }])
+
     .controller('FollowsController', ['$scope', '$http', '$state', function ($scope, $http, $state) {
         $scope.title = "我的关注";
         $scope.toUser = function (UserID) {
@@ -239,6 +255,44 @@ angular.module('Controllers', [])
 
             }
         });
+    }])
+    .controller('MyStrategiesController', ['$scope', '$http', '$state', '$rootScope', function ($scope, $http, $state, $rootScope) {
+        $scope.title = "我的攻略";
+        var user = $rootScope.uid;
+        if (user == null) {
+            $http.get('php/isLogin.php').then(function (response) {
+                if (response.data.code == 1) {
+                    user = response.data.data.uid;
+                }
+            })
+        }
+        $http.post('php/getMyStrategies.php', {type: 1}).then(function (response) {
+            if (response.data.code == 1) {
+                $scope.strategies = response.data.data;
+            }
+        });
+        $scope.toDetail = function (sid) {
+            $state.go('strategy', {sid: sid});
+        }
+    }])
+    .controller('MyCommentController', ['$scope', '$http', '$state', '$rootScope', function ($scope, $http, $state, $rootScope) {
+        $scope.title = "回复过的攻略";
+        var user = $rootScope.uid;
+        if (user == null) {
+            $http.get('php/isLogin.php').then(function (response) {
+                if (response.data.code == 1) {
+                    user = response.data.data.uid;
+                }
+            })
+        }
+        $http.post('php/getMyStrategies.php', {type: 2}).then(function (response) {
+            if (response.data.code == 1) {
+                $scope.strategies = response.data.data;
+            }
+        });
+        $scope.toDetail = function (sid) {
+            $state.go('strategy', {sid: sid});
+        }
     }])
     .controller('UserController', ['$scope', '$http', '$state', '$stateParams', function ($scope, $http, $state, $stateParams) {
         $scope.title = "用户信息";
@@ -314,7 +368,7 @@ angular.module('Controllers', [])
                 fsrc = getFileUrl("myfile");
                 convertImgToBase64(fsrc, function (base64Img) {
                     $http.post('php/uploadimg.php', {image: base64Img}).then(function (response) {
-                        if(response.data.code==100){
+                        if (response.data.code == 100) {
                             $scope.img = response.data.data.url;
                         }
                     });
@@ -325,12 +379,12 @@ angular.module('Controllers', [])
             var username = $scope.username;
             var gender = $scope.gender;
             var img = $scope.img;
-            if (username == user.username && gender == user.gender&&img==user.img) {
+            if (username == user.username && gender == user.gender && img == user.img) {
                 alert("修改成功！");
                 $state.go('mine');
                 return;
             }
-            $http.post('php/updateInfo.php', {username: username, gender: gender,img:img}).then(function (response) {
+            $http.post('php/updateInfo.php', {username: username, gender: gender, img: img}).then(function (response) {
                 if (response.data.code == 1) {
                     alert("修改成功！");
                     $state.go('mine');
@@ -384,6 +438,9 @@ angular.module('Controllers', [])
         $http.post('php/getStrategies.php', {type: 2, search: stitle}).then(function (response) {
             if (response.data.code == 1) {
                 $scope.strategies = response.data.data;
+                $scope.result = false;
+            } else {
+                $scope.result = true;
             }
         });
         $scope.getTips = function () {
@@ -530,12 +587,14 @@ angular.module('Controllers', [])
         }
     }])
     .controller('StrategyController', ['$scope', '$http', '$state', '$stateParams', '$rootScope', function ($scope, $http, $state, $stateParams, $rootScope) {
+        //当攻略属于当前用户，用户可以删除本帖。
         $scope.title = "攻略";
         $scope.self = false;
         $scope.commenting = false;
         $scope.more = false;
         var page = 1;
         var user = $rootScope.uid;
+        var sid = $stateParams.sid;
         if (user == null) {
             $http.get('php/isLogin.php').then(function (response) {
                 if (response.data.code == 1) {
@@ -543,7 +602,9 @@ angular.module('Controllers', [])
                 }
             })
         }
-        var sid = $stateParams.sid;
+
+        $scope.suid = user;
+
         $http.post('php/getStrategy.php', {sid: sid})
             .then(function (response) {
                 if (response.data.code == 1) {
@@ -593,6 +654,17 @@ angular.module('Controllers', [])
                 $state.go('mine');
             else
                 $state.go('user', {uid: uid});
+        };
+        $scope.deleteCom = function (cid) {
+            if (!confirm("确定删除这条评论？")) {
+                return;
+            }
+            $http.post('php/deleteComment.php',{sid: sid,cid:cid,page:page}).then(function (response) {
+               if(response.data.code==1){
+                   $scope.commtent = response.data.data;
+                   alert("成功删除该评论");
+               }
+            });
         };
         $scope.tofollow = function (uid) {
             $http({

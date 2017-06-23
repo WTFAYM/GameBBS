@@ -23,14 +23,14 @@ $db = new MyDB();
 $arr = [];
 $page = $page*5;
 //查询前五条热门攻略
-$serachSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,DATA,COUNT(cid) COUNT 
+$serachSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,`data`,COUNT(cid) COUNT 
               FROM `user`, strategies LEFT JOIN `comment` ON strategies.sid=comment.sid 
               WHERE user.uid=strategies.uid GROUP BY strategies.sid ORDER BY top,COUNT DESC LIMIT $page";
-$serachAllSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,data,COUNT(cid) COUNT 
+$serachAllSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,`data`,COUNT(cid) COUNT 
               FROM `user`, strategies LEFT JOIN `comment` ON strategies.sid=comment.sid 
               WHERE user.uid=strategies.uid GROUP BY strategies.sid ORDER BY top,COUNT DESC";
 
-$getSearchSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,DATA,COUNT(cid) COUNT 
+$getSearchSQL = "SELECT strategies.sid,user.uid,user.username,user.img,title,`data`,COUNT(cid) COUNT 
               FROM `user`, strategies LEFT JOIN `comment` ON strategies.sid=comment.sid 
               WHERE user.uid=strategies.uid AND title LIKE \"%".$text."%\" GROUP BY strategies.sid ORDER BY top,COUNT DESC";
 
